@@ -1,0 +1,209 @@
+/* Couleurs de base */
+:root {
+    --primary-bg-color: #31353a; /* Couleur de fond primaire */
+    --secondary-bg-color: #1c1e21; /* Couleur de fond secondaire */
+    --text-color: #F8F9FA; /* Couleur du texte */
+    --accent-color: #505dca; /* Couleur d'accent */
+    --hover-bg-color: #505dca; /* Couleur de fond au survol */
+  }
+  
+  
+  body {
+    background-color: var(--primary-bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  h1 {
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  #search-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  
+  #search-icon {
+    color: var(--accent-color);
+    position: absolute;
+    left: 1rem;
+  }
+  
+  #search-input {
+    flex-grow: 1;
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 20px;
+    margin-right: 1rem;
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+  }
+  
+  #folder-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  
+  .folder-btn {
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: left;
+  }
+  
+  .folder-btn:hover {
+    background-color: var(--hover-bg-color);
+  }
+  
+  #files-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .folder > .nested {
+    display: none; 
+    margin-left: 20px; 
+  }
+  
+  .folder > .nested.show {
+    display: block; /* Montre les sous-dossiers lorsque cette classe est ajoutée */
+  }
+  .folder-title {
+    cursor: pointer;
+    /* Ajoutez d'autres styles pour le titre du dossier ici */
+  }
+  
+  
+  .audio-file-item {
+    background-color: var(--secondary-bg-color);
+    border-radius: 5px;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem; /* Ajout d'espace entre les éléments */
+  }
+  
+  .play-btn,
+  .favourite-btn,
+  .download-btn,
+  .add-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .play-btn:hover,
+  .favourite-btn:hover,
+  .download-btn:hover,
+  .add-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .bi-heart-fill {
+    color: red;
+  }
+  
+  .file-name {
+    flex-grow: 1;
+    margin-right: 10px;
+    overflow: hidden; /* Empêche le texte de déborder */
+    white-space: nowrap; /* Gardez le texte sur une seule ligne */
+    text-overflow: ellipsis; /* Ajoute des points de suspension si le texte est trop long */
+  }
+  
+  #filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    padding: 1rem;
+    background-color: var(--secondary-bg-color);
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+  
+  select, input[type="number"], input[type="radio"] {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid var(--accent-color);
+    background-color: var(--primary-bg-color);
+    color: var(--text-color);
+  }
+  
+  select:focus, input[type="number"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+  
+  label {
+    color: var(--text-color);
+  }
+  
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  button:hover {
+    background-color: darken(var(--accent-color), 60%);
+  }
+  
+  #key-filter {
+    display: flex;
+    align-items: center;
+    gap: 1rem; 
+  }
+  
+  #key-mode-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /
+  }
+  
+  #reset-filters-btn:hover{
+    display: block;
+    background-color: red;
+  }
+  
+  #favorites-container .audio-file-item {
+    margin-bottom: 0.5rem;
+  }
+  
+  #favorites-container {
+    display: none; /* Cachez par défaut, affichez-le lorsque la checkbox est cochée */
+    margin-bottom: 1rem;
+  }
+  
+  
+  /* Media queries pour responsivité */
+  @media (max-width: 480px) {
+    .audio-file-item {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    #files-container {
+      width: auto;
+    }
+  }

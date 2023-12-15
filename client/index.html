@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <title>Sound Library</title>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js"></script>
+
+</head>
+
+<body>
+
+    <H1>Sound Loops <i class="bi bi-arrow-repeat rotating"></i></H1>
+    <div id="search-container">
+        <i class="bi bi-search" id="search-icon"></i>
+        <input type="text" id="search-input" placeholder="  Search Library" oninput="filterSongs()" />
+    </div><br>
+    <div id="filter-container">
+        <div id="key-filter">
+            <label for="key-select">KEY :</label>
+            <select id="key-select">
+                <option value="">Any Key</option>
+                <option value="A">A</option>
+                <option value="A#">A♯</option>
+                <option value="B">B</option>
+                <option value="B#">B♯</option>
+                <option value="C">C</option>
+                <option value="C#">C♯</option>
+                <option value="D">D</option>
+                <option value="D#">D♯</option>
+                <option value="E">E</option>
+                <option value="E#">E♯</option>
+                <option value="F">F</option>
+                <option value="F#">F♯</option>
+                <option value="G">G</option>
+                <option value="G#">G♯</option>
+            </select>
+            <div id="key-mode-filter">
+                <input type="radio" id="mode-maj" name="key-mode" value="Maj">
+                <label for="mode-maj">Major</label>
+                <input type="radio" id="mode-min" name="key-mode" value="Min">
+                <label for="mode-min">Minor</label>
+            </div>
+        </div>
+
+        <!-- BPM Filter -->
+        <div id="bpm-filter">
+            <label for="bpm-input">BPM :</label>
+            <input type="number" id="bpm-input" placeholder="BPM">
+        </div>
+
+        <button onclick="applyKeyAndBpmFilters()">Find</button>
+        <button id="reset-filters-btn">X</button>
+    </div>
+
+    <br>
+    <input type="checkbox" id="show-favorites" name="show-favorites">
+    <label for="show-favorites">Favorites</label><br><br>
+
+    <div id="favorites-container" style="display: none;">
+        <!-- Les morceaux favoris apparaîtront ici -->
+    </div>
+
+
+    <div id="folder-container"></div>
+    <div id="files-container"></div>
+
+    <div id="soundLoopsDiv"></div>
+</body>
+
+</html>
