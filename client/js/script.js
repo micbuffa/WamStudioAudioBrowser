@@ -1,6 +1,7 @@
 let audioData; // Variable globale pour stocker les données JSON
 //const URL_SERVER = "http://localhost:3000";
-const URL_SERVER = "http://localhost:6002";
+//const URL_SERVER = "http://localhost:6002";
+const URL_SERVER = "https://wam-bank.i3s.univ-cotedazur.fr"
 
 let audioLoadCounter = 0;
 let totalAudios = 0; // Total des audios à charger
@@ -337,15 +338,19 @@ function createAudioPlayer(element, path, isFavorite = false, isFilter = false) 
     const audioId = `audio-${safeName}${audioIdfav}${audioIdfilter}`;
     const durationId = `duration-${safeName}`;
     const fileExtension = element.name.split('.').pop();
-    path = path.replace(/#/g, '%23').replace(/ /g, '%20');
+    //path = path.replace(/#/g, '%23').replace(/ /g, '%20');
 
-    const fullPath = path.startsWith(URL_SERVER) ? path : `${URL_SERVER}${path}`;
+    //let fullPath = path.startsWith(URL_SERVER) ? path : `${URL_SERVER}${path}`;
+    //fullPath = path.replace(/#/g, '%23').replace(/ /g, '%20');
 
     const fullPathOfAudioFile = URL_SERVER + element.url;
-    const urlOfAudioFile = new URL(fullPathOfAudioFile);
 
-    console.log(path);
-    console.log(fullPath);
+    let urlOfAudioFile = new URL(fullPathOfAudioFile);
+    let urlOfAudioFileAsString = urlOfAudioFile.toString();
+    urlOfAudioFileAsString = urlOfAudioFileAsString.replace(/#/g, '%23').replace(/ /g, '%20');
+
+    console.log("urlOfAudioFileAsString:", urlOfAudioFileAsString)
+
     return `
       <div class="audio-file-item" id="audio-item-${safeName}" data-filename="${element.name}">
         
@@ -355,12 +360,12 @@ function createAudioPlayer(element, path, isFavorite = false, isFilter = false) 
           <span class="file-name">${element.name}</span>
           <span class="audio-duration" id="${durationId}"></span>
           <audio id="${audioId}" preload="none">
-              <source src="${urlOfAudioFile}" type="audio/${fileExtension}">
+              <source src="${urlOfAudioFileAsString}" type="audio/${fileExtension}">
           </audio>
-          <button class="favourite-btn" data-fullpath="${urlOfAudioFile}" onclick="toggleFavourite('${urlOfAudioFile}', this)">
+          <button class="favourite-btn" data-fullpath="${urlOfAudioFileAsString}" onclick="toggleFavourite('${urlOfAudioFileAsString}', this)">
               <i class="bi bi-heart"></i>
           </button>
-          <button class="download-btn" onclick="window.open('${urlOfAudioFile}')">
+          <button class="download-btn" onclick="window.open('${urlOfAudioFileAsString}')">
               <i class="bi bi-plus-circle"></i>
           </button>
       </div>
